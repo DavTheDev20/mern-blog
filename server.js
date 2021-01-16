@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const path = require('path');
-const api = require('./routes/api.js');
+const apiRoute = require('./routes/apiRoute.js');
 const BlogPost = require('./models/blogPost');
 
 const app = express();
@@ -22,6 +22,6 @@ db.once('open', function () {
 app.use(morgan('tiny'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(api);
+app.use('/api', apiRoute);
 
 app.listen(port, () => console.log(`Server running on port ${port}`));

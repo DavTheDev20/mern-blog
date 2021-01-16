@@ -4,7 +4,7 @@ const BlogPost = require('../models/blogPost');
 
 const router = express.Router();
 
-router.get('/api', (req, res) => {
+router.get('/', (req, res) => {
   BlogPost.find({}, (error, posts) => {
     if (error) {
       console.log(error);
@@ -14,7 +14,7 @@ router.get('/api', (req, res) => {
   });
 });
 
-router.get('/api/name', (req, res) => {
+router.get('/name', (req, res) => {
   const data = {
     name: 'Nina',
     age: 21,
@@ -22,7 +22,7 @@ router.get('/api/name', (req, res) => {
   res.json(data);
 });
 
-router.post('/api/save', (req, res) => {
+router.post('/save', (req, res) => {
   console.log('Body: ', req.body);
 
   const enteredTitle = req.body.title;
